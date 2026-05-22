@@ -1,5 +1,3 @@
-const pb = new PocketBase('http://192.168.2.193:8090');
-
 const statusText = document.getElementById('status');
 
 async function login() {
