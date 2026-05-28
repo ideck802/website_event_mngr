@@ -30,7 +30,7 @@ function renderDash() {
   events.forEach(event => {
     html += `<div class="event" id='event${events.indexOf(event)}'>
       <h3>${event.title}</h3>
-      <p>${event['start-date']} to ${event['end-date']}</p>
+      <p>${event.start_date} to ${event.end_date}</p>
       <p>${event.details}</p>
       <button onclick='editEvent(${events.indexOf(event)})'>Edit</button>
       <button onclick='deleteEvent(${events.indexOf(event)})'>Delete</button>
@@ -79,23 +79,23 @@ function editEvent(index, isNew = false) {
     </div>
     <input type='checkbox' id='time_toggle' `;
 
-  if (event['start-time'] !== false) {
+  if (event.start_time !== false) {
     html += 'checked ';
   }
 
   html += `onchange='toggleTime()'/>
-    <label for='time-toggle'>Include start time</label>
+    <label for='time_toggle'>Include start time</label>
     <div class='row'>
       <p>Start Date:</p>
-      <input type='date' id='start_date' value='${event['start-date']}'>
-      <input type='time' id='start_time' value='${event['start-time'] || '00:00'}'>
+      <input type='date' id='start_date' value='${event.start_date}'>
+      <input type='time' id='start_time' value='${event.start_time || '00:00'}'>
     </div>
-    <input type='checkbox' id='same_date' ${event['start-date'] === event['end-date'] ? 'checked' : ''} 
+    <input type='checkbox' id='same_date' ${event.start_date === event.end_date ? 'checked' : ''} 
       onchange='toggleSameDate()'/>
     <label for='same_date'>End date same as start date</label>
     <div class='row' id='end_date_row'>
       <p>End Date:</p>
-      <input type='date' id='end_date' value='${event['end-date']}'>
+      <input type='date' id='end_date' value='${event.end_date}'>
     </div>
     <div class='row'>
       <p>Details:</p>
@@ -133,9 +133,9 @@ function saveEvent(index) {
 
   events[index] = {
     title,
-    'start-date': startDate,
-    'end-date': endDate,
-    'start-time': includeTime ? startTime : false,
+    'start_date': startDate,
+    'end_date': endDate,
+    'start_time': includeTime ? startTime : false,
     details
   };
 
@@ -152,9 +152,9 @@ function addEvent() {
   const currentDate = new Date();
   const newEvent = {
     title: '',
-    'start-date': currentDate.toISOString().split('T')[0],
-    'end-date': currentDate.toISOString().split('T')[0],
-    'start-time': false,
+    'start_date': currentDate.toISOString().split('T')[0],
+    'end_date': currentDate.toISOString().split('T')[0],
+    'start_time': false,
     details: ''
   };
   events.push(newEvent);
