@@ -30,7 +30,7 @@ function renderDash() {
   events.forEach(event => {
     html += `<div class="event" id='event${events.indexOf(event)}'>
       <h3>${event.title}</h3>
-      <p>${event['start_date']} to ${event['end_date']}</p>
+      <p>${event['start-date']} to ${event['end-date']}</p>
       <p>${event.details}</p>
       <button onclick='editEvent(${events.indexOf(event)})'>Edit</button>
       <button onclick='deleteEvent(${events.indexOf(event)})'>Delete</button>
@@ -79,7 +79,7 @@ function editEvent(index, isNew = false) {
     </div>
     <input type='checkbox' id='time-toggle' `;
 
-  if (event['start_time'] !== false) {
+  if (event['start-time'] !== false) {
     html += 'checked ';
   }
 
@@ -87,15 +87,15 @@ function editEvent(index, isNew = false) {
     <label for='time-toggle'>Include start time</label>
     <div class='row'>
       <p>Start Date:</p>
-      <input type='date' id='start_date' value='${event['start_date']}'>
-      <input type='time' id='start_time' value='${event['start_time'] || '00:00'}'>
+      <input type='date' id='start_date' value='${event['start-date']}'>
+      <input type='time' id='start_time' value='${event['start-time'] || '00:00'}'>
     </div>
-    <input type='checkbox' id='same_date' ${event['start_date'] === event['end_date'] ? 'checked' : ''} 
+    <input type='checkbox' id='same_date' ${event['start-date'] === event['end-date'] ? 'checked' : ''} 
       onchange='toggleSameDate()'/>
     <label for='same_date'>End date same as start date</label>
     <div class='row' id='end_date_row'>
       <p>End Date:</p>
-      <input type='date' id='end_date' value='${event['end_date']}'>
+      <input type='date' id='end_date' value='${event['end-date']}'>
     </div>
     <div class='row'>
       <p>Details:</p>
@@ -125,9 +125,9 @@ function closeDialog() {
 
 function saveEvent(index) {
   const title = document.getElementById('title').value;
-  const startDate = document.getElementById('start_date').value;
-  const endDate = document.getElementById('end_date').value;
-  const startTime = document.getElementById('start_time').value;
+  const startDate = document.getElementById('start-date').value;
+  const endDate = document.getElementById('end-date').value;
+  const startTime = document.getElementById('start-time').value;
   const includeTime = document.getElementById('time-toggle').checked;
   const details = document.getElementById('details').value;
 
