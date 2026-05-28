@@ -47,7 +47,7 @@ function sortEvents(events) {
 }
 
 function toggleTime() {
-  const timeToggle = document.getElementById('time-toggle');
+  const timeToggle = document.getElementById('time_toggle');
   const startTime = document.getElementById('start_time');
 
   if (timeToggle.checked) {
@@ -77,7 +77,7 @@ function editEvent(index, isNew = false) {
       <p>Title:</p>
       <input type='text' id='title' value='${event.title}'>
     </div>
-    <input type='checkbox' id='time-toggle' `;
+    <input type='checkbox' id='time_toggle' `;
 
   if (event['start-time'] !== false) {
     html += 'checked ';
@@ -125,17 +125,17 @@ function closeDialog() {
 
 function saveEvent(index) {
   const title = document.getElementById('title').value;
-  const startDate = document.getElementById('start-date').value;
-  const endDate = document.getElementById('end-date').value;
-  const startTime = document.getElementById('start-time').value;
-  const includeTime = document.getElementById('time-toggle').checked;
+  const startDate = document.getElementById('start_date').value;
+  const endDate = document.getElementById('end_date').value;
+  const startTime = document.getElementById('start_time').value;
+  const includeTime = document.getElementById('time_toggle').checked;
   const details = document.getElementById('details').value;
 
   events[index] = {
     title,
-    'start_date': startDate,
-    'end_date': endDate,
-    'start_time': includeTime ? startTime : false,
+    'start-date': startDate,
+    'end-date': endDate,
+    'start-time': includeTime ? startTime : false,
     details
   };
 
@@ -152,9 +152,9 @@ function addEvent() {
   const currentDate = new Date();
   const newEvent = {
     title: '',
-    'start_date': currentDate.toISOString().split('T')[0],
-    'end_date': currentDate.toISOString().split('T')[0],
-    'start_time': false,
+    'start-date': currentDate.toISOString().split('T')[0],
+    'end-date': currentDate.toISOString().split('T')[0],
+    'start-time': false,
     details: ''
   };
   events.push(newEvent);
