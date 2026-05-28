@@ -85,4 +85,26 @@ header {
 
 .dialog {
 	display: none;
+
+	position: absolute;
+
+	z-index: 1;
+
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+
+	flex-direction: column;
+
+	background: #a1a1a1;
+
+	.row {
+		display: flex;
+
+		flex-direction: row;
+		align-items: center;
+
+		margin: 10px;
+	}
 }

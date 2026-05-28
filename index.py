@@ -14,6 +14,25 @@ PATH = "events.json"
 
 app = FastAPI()
 
+# ------------------------
+# TO FIX CORS ISSUES IN DEV. COMMENT OUT OR REMOVE IN PROD
+from fastapi.middleware.cors import CORSMiddleware
+
+origins = [
+    "http://127.0.0.1:5000",
+    "http://127.0.0.1:5500"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+# ------------------------
+# ------------------------
+
 def get_sha(url, headers):
     r = requests.get(url, headers=headers)
     file_data = r.json()
@@ -52,6 +71,19 @@ async def set_events(events: Any):
 
     r = requests.put(url, headers=headers, json=payload)
     return {"status": r.status_code, "result": r.json()}
+
+@app.get("/store_events")
+async def store_events(events: Any):
+    with open("events.json", "w") as f:
+        json.dump(json.loads(events), f, indent=4)
+    
+    return {"status": "success"}
+
+@app.get("/load_events")
+async def load_events():
+    with open("events.json", "r") as f:
+        data = json.load(f)
+    return data
 
 # New JSON content
 new_json = [

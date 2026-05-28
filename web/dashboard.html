@@ -3,7 +3,7 @@
 
 <head>
     <title>Dashboard</title>
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/dashboard.css">
 </head>
 
 <body>
@@ -11,11 +11,12 @@
     <header>
         <p>Event Manager</p>
         <button onclick="logout()">Logout</button>
-        <button onclick="testBackend()">Test Backend</button>
-    </header>
-    <div class="main">
         <a href="change-password.html">Change Password</a>
+    </header>
+    <div class="main" id="main">
+        <h2>Loading...</h2>
     </div>
+    <div class="dialog" id="dialog"></div>
 
     <script src="https://unpkg.com/pocketbase/dist/pocketbase.umd.js"></script>
     <script src="js/core.js"></script>
