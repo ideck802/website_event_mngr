@@ -8,6 +8,16 @@ if (!pb.authStore.isValid) {
   window.location.href = 'index.html';
 }
 
+function toggleMenu() {
+  const menu = document.getElementById('menu');
+
+  if (menu.style.display === 'none') {
+    menu.style.display = 'flex';
+  } else {
+    menu.style.display = 'none';
+  }
+}
+
 function logout() {
   pb.authStore.clear();
 
@@ -19,13 +29,13 @@ function goChangePassword() {
 }
 
 function renderDash() {
-  let html = `<div class='events'>
-    <div class='actions'>
-      <button onclick='addEvent()'>Add Event</button>
-      <button onclick='storeEvents()'>Store Events</button>
-      <button onclick='loadEvents()'>Load Stored Events</button>
-      <button onclick='setEvents()'>Publish Events</button>
-    </div>`;
+  let html = `<div class='actions'>
+      <button onclick='addEvent()'>Add</button>
+      <button onclick='storeEvents()'>Store</button>
+      <button onclick='loadEvents()'>Load</button>
+      <button onclick='setEvents()'>Publish</button>
+    </div>
+    <div class='events'>`;
 
   events.forEach(event => {
     html += `<div class="event" id='event${events.indexOf(event)}'>
@@ -37,7 +47,7 @@ function renderDash() {
     </div>`;
   });
 
-  html += `</div>`;
+  html += '</div>';
 
   main.innerHTML = html;
 }

@@ -3,22 +3,30 @@
 
 <head>
     <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>
+    <div class="login-container">
+        <div class="top">
+            <h1><i>Event Manager</i></h1>
+            <p>Login</p>
+        </div>
+        <form id="loginForm" onsubmit="login(event)">
+            <p id="status"></p>
+            <div class="row">
+                <p>Email</p>
+                <input id="email" type="email" autocomplete="email">
+            </div>
+            <div class="row">
+                <p>Password</p>
+                <input id="password" type="password" autocomplete="current-password">
+            </div>
 
-    <div class="box">
-
-        <h1>Login</h1>
-
-        <input id="email" type="email" placeholder="Email">
-        <input id="password" type="password" placeholder="Password">
-
-        <button onclick="login()">Login</button>
-
-        <p id="status"></p>
-
+            <button type="submit">Login</button>
+        </form>
     </div>
 
     <script src="https://unpkg.com/pocketbase/dist/pocketbase.umd.js"></script>

@@ -1,6 +1,7 @@
 const statusText = document.getElementById('status');
 
-async function login() {
+async function login(event) {
+  event.preventDefault();
 
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
